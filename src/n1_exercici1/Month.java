@@ -18,13 +18,6 @@ public class Month {
 	Set<String> hashset = new HashSet<>();
 	Iterator<String> it;
 
-	public static void main(String[] args) {
-
-		Month m = new Month();
-		m.ManipularArray();
-
-	}
-
 	public void ManipularArray() {
 
 		// Carga datos en el Array
@@ -72,16 +65,40 @@ public class Month {
 		System.out.println(" ");
 		System.out.println(" ");
 		System.out.println(" --- ");
-		
+
 		// Creamos un iterator e imprimimos el Array
 		System.out.println("5 Probamos el iterador recorriendo el hashset");
-		int contador = 0;
 		it = hashset.iterator();
 		while (it.hasNext()) {
 			System.out.print(it.next() + " ");
-
 		}
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" --- ");
+		
+		// Creamos un iterator y eliminamos "agosto"
+		System.out.println("6 Utilizamos el iterador para quitar agosto");
+		it = hashset.iterator();
+		String mesAEliminar = "agosto";
+		while (it.hasNext()) {
+			String mes = (String) it.next().toString().trim();
+			boolean prueba = mes.equals(mesAEliminar);
+			
+			if (mes.equals(mesAEliminar)) {
+				it.remove();
+			}
+		}
+		
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" --- ");
+		
+		// Imprimimos la nueva lista sin el mes eliminado en el paso anterior
+		System.out.println("7 Imprimimos la nueva lista sin el mes eliminado en el paso anterior");
+		for (String string : hashset) {
+			System.out.println(string);
 		
 	}
 
+	}
 }
