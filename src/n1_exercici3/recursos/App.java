@@ -6,7 +6,9 @@ public class App {
 
 		JuegoCapitales jc = new JuegoCapitales();
 		jc.LeerLinea();
-		
+		jc.ListaAleatoria();
+		jc.pedirNombre();
+		jc.jugar();
 	}
 
 }
