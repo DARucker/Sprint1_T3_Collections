@@ -1,10 +1,10 @@
 package n2_exercici2;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Restaurant {
 
-	
 	private String nombre;
 	private int puntuacion;
 	
@@ -26,12 +26,16 @@ public class Restaurant {
 		this.puntuacion = puntuacion;
 	}
 	
+	public Restaurant(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public Restaurant() {
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "Restaurant [nombre=" + nombre + ", puntuacion=" + puntuacion + "]";
+		return "nombre=" + nombre + ", puntuacion=" + puntuacion;
 	}
 	@Override
 	public int hashCode() {
@@ -47,6 +51,5 @@ public class Restaurant {
 			return false;
 		Restaurant other = (Restaurant) obj;
 		return Objects.equals(nombre, other.nombre) && puntuacion == other.puntuacion;
-	}
-	
+	}	
 }
