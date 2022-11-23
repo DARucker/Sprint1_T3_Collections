@@ -29,6 +29,8 @@ public class JuegoCapitales2 {
 	private String nombre;
 	private final String RUTA = "src\\n1_exercici3\\";
 
+	// Utilizo un segundo HashMap para asegurarme que ninguna pregunta se repita
+	
 	public void LeerLinea() {
 
 		try {
@@ -49,6 +51,8 @@ public class JuegoCapitales2 {
 		} catch (IOException e) {e.printStackTrace();}
 	}
 
+	// Creamos un HashSet para asegurarnos que ninguna pregunta se repita. 
+	
 	public void ListaAleatoria() {
 		listaAleatoria = new HashSet<Integer>();
 		while (listaAleatoria.size() < 10) {
