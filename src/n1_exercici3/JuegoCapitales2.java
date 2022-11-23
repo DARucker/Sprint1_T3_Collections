@@ -19,21 +19,21 @@ import java.util.Set;
 
 public class JuegoCapitales2 {
 
-	Map<String, String> capitales = new HashMap<>();
-	Map<Integer, String> capitalesOrden = new HashMap<>();
-	Set<Integer> listaAleatoria;
-	FileReader fileReader;
-	BufferedReader bufferedReader;
-	String linea;
-	String spliter = " ";
-	String nombre;
+	private Map<String, String> capitales = new HashMap<>();
+	private Map<Integer, String> capitalesOrden = new HashMap<>();
+	private Set<Integer> listaAleatoria;
+	private FileReader fileReader;
+    private BufferedReader bufferedReader;
+	private String linea;
+	private String spliter = " ";
+	private String nombre;
+	private final String RUTA = "src\\n1_exercici3\\";
 
 	public void LeerLinea() {
 
 		try {
 
-			fileReader = new FileReader(
-					"C:\\Users\\Dario\\git\\Sprint1_Tasca3\\src\\n1_exercici3\\countries.txt");
+			fileReader = new FileReader(RUTA + "countries.txt");
 			bufferedReader = new BufferedReader(fileReader);
 			int claveNumerica = 0;
 
@@ -46,43 +46,14 @@ public class JuegoCapitales2 {
 					claveNumerica++;
 				}
 			}
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
-		/*
-		 * Para control
-		 *
-		 * System.out.println(capitales.entrySet());
-		 * System.out.println(capitalesOrden.entrySet());
-		 * 
-		 * for (Entry<String, String> s : capitales.entrySet()) {
-		 * System.out.println("Lista original. Pais: " + s.getKey() + " capital " +
-		 * s.getValue()); }
-		 * 
-		 * for (Entry<Integer, String> i : capitalesOrden.entrySet()) {
-		 * System.out.println("Lista ordinal. Orden: " + i.getKey() + " Pais " +
-		 * i.getValue()); }
-		 */
+		} catch (IOException e) {e.printStackTrace();}
 	}
 
 	public void ListaAleatoria() {
-
 		listaAleatoria = new HashSet<Integer>();
-
 		while (listaAleatoria.size() < 10) {
-
 			listaAleatoria.add((int) (Math.random() * 50));
 		}
-
-		/*
-		 * Para control
-		 * 
-		 * for (Integer integer : listaAleatoria) {
-		 * System.out.println("Lista Aleatoria " + integer); }
-		 */
 	}
 
 	public void pedirNombre() {
@@ -92,8 +63,6 @@ public class JuegoCapitales2 {
 		System.out.println("Ahora vamos a jugar el juego de las capitales europeas.");
 		System.out.println("Te diré 10 países y deberás contestar su capital");
 		System.out.println("Empecemos");
-		System.out.println(" ");
-
 	}
 
 	public void jugar() {
@@ -104,8 +73,8 @@ public class JuegoCapitales2 {
 		for (Integer lA : listaAleatoria) {
 
 			String pais = capitalesOrden.get(lA);
+			System.out.println("-----");
 			System.out.println("Jugada numero" + jugadaNumero + " pais: " + pais);
-			System.out.println();
 			String respuesta = capturarString("Ahora ingresa su capital: ");
 			String capital = capitales.get(pais);
 			System.out.println("capital " + capital);
@@ -115,7 +84,7 @@ public class JuegoCapitales2 {
 			System.out.println("puntaje: " + puntaje);
 			jugadaNumero++;
 		}
-		System.out.println("  ");
+		System.out.println("****");
 		System.out.println("Felicitaciones " + nombre + ", tu puntaje fue de: " + puntaje + " puntos!");
 		System.out.println("Fin del juego");
 
@@ -124,9 +93,8 @@ public class JuegoCapitales2 {
 
 	private void guardarArchivo(String nombre, int puntaje) {
 
-		String ruta = "C:\\Users\\Dario\\git\\Sprint1_Tasca3\\src\\n1_exercici3\\classificacio.txt";
-		String contenidoArchivo = nombre + "," + puntaje + ";";
-		File file = new File(ruta);
+		String contenidoArchivo = nombre + "," + puntaje + "\r\n";
+		File file = new File(RUTA + "classificacio.txt");
 		try {
 			if (!file.exists()) {
 				file.createNewFile();
@@ -143,10 +111,7 @@ public class JuegoCapitales2 {
 
 			System.out.println("Archivo de puntaje guardado.");
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (IOException e) {e.printStackTrace();}
 	}
 
 	public static String capturarString(String mensaje) {
@@ -156,7 +121,6 @@ public class JuegoCapitales2 {
 		respuesta = teclado.nextLine();
 
 		return respuesta;
-
 	}
 
 }
