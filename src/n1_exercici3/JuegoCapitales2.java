@@ -78,7 +78,7 @@ public class JuegoCapitales2 {
 
 			String pais = capitalesOrden.get(lA);
 			System.out.println("-----");
-			System.out.println("Jugada numero" + jugadaNumero + " pais: " + pais);
+			System.out.println("Jugada numero " + jugadaNumero + " pais: " + pais);
 			String respuesta = capturarString("Ahora ingresa su capital: ");
 			String capital = capitales.get(pais);
 			System.out.println("capital " + capital);
@@ -97,7 +97,7 @@ public class JuegoCapitales2 {
 
 	private void guardarArchivo(String nombre, int puntaje) {
 
-		String contenidoArchivo = nombre + "," + puntaje + "\r\n";
+		String contenidoArchivo = nombre + "," + puntaje + "\n";
 		File file = new File(RUTA + "classificacio.txt");
 		try {
 			if (!file.exists()) {
