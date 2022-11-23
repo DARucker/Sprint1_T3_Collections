@@ -13,10 +13,10 @@ import java.util.Set;
 public class Month {
 
 	private String name = "";
-	List<String> months = new ArrayList<>();
-	List<String> monthsIterator = new ArrayList<>();
-	Set<String> hashset = new HashSet<>();
-	Iterator<String> it;
+	private List<String> months = new ArrayList<>();
+	private List<String> monthsIterator = new ArrayList<>();
+	private Set<String> hashset = new HashSet<>();
+	private Iterator<String> it;
 
 	public void ManipularArray() {
 

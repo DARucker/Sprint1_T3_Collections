@@ -14,35 +14,47 @@ public class App {
 
 	public static void main(String[] args) {
 	
-//		Restaurant restaurante = new Restaurant();
 		Set<Restaurant> listaRestaurant = new HashSet<>();
 
-		listaRestaurant.add(new Restaurant("abc", 1));
-		listaRestaurant.add(new Restaurant("abc", 2));
-		listaRestaurant.add(new Restaurant("abcd", 1));
-		listaRestaurant.add(new Restaurant("ddd", 1));
-		listaRestaurant.add(new Restaurant("ddd", 3));
-		listaRestaurant.add(new Restaurant("ddd", 2));
-		listaRestaurant.add(new Restaurant("add", 2));
-		listaRestaurant.add(new Restaurant("abc", 1));
+		listaRestaurant.add(new Restaurant("abc", 1)); // 1
+		listaRestaurant.add(new Restaurant("abc", 2)); // 2
+		listaRestaurant.add(new Restaurant("abcd", 1)); // 3
+		listaRestaurant.add(new Restaurant("ddd", 1)); // 4
+		listaRestaurant.add(new Restaurant("ddd", 3)); // 5
+		listaRestaurant.add(new Restaurant("ddd", 3)); // 6
+		listaRestaurant.add(new Restaurant("DDD", 2)); // 7
+		listaRestaurant.add(new Restaurant("add", 2)); // 8
+		listaRestaurant.add(new Restaurant("abc", 1)); // 9
+		listaRestaurant.add(new Restaurant("ABC", 1)); // 10
+		listaRestaurant.add(new Restaurant("abc", 1)); // 11
+		listaRestaurant.add(new Restaurant("abc", 6)); // 12
+
 		
 		TreeSet<Restaurant> treeSet = new TreeSet<Restaurant>(new Comparator<Restaurant>() {
 			@Override
 			public int compare(Restaurant o1, Restaurant o2) {
-				return o1.getNombre().compareTo(o2.getNombre());
+				int res=0;
+					if(o1.getNombre().compareToIgnoreCase(o2.getNombre()) < 0) {
+						res = -1;	
+					}else if(o1.getNombre().compareToIgnoreCase(o2.getNombre()) > 0) {
+						res = 1;	
+					}else if(o1.getNombre().compareToIgnoreCase(o2.getNombre()) == 0 ){
+							if(o1.getPuntuacion() > (o2.getPuntuacion())){
+								res = -1;
+							}else if (o1.getPuntuacion() < (o2.getPuntuacion())){
+								res = 1;
+							}}
+								return res;
 			}});
 		
 		for (Restaurant restaurant : listaRestaurant) {
-			System.out.println(restaurant);
-			restaurant.setNombre(restaurant.getNombre() + "#" + restaurant.getPuntuacion());
 			treeSet.add(restaurant);
 		}
 		
-		System.out.println("****");
-		
+		int orden = 1;
 		for (Restaurant restaurant2 : treeSet) {
-			System.out.println(restaurant2);
-			//String nombreOrdenado = restaurant2.getNombre().split(regex)
+			System.out.println("orden: " + orden + ", nombre: " + restaurant2.getNombre() + ", puntacion: " + restaurant2.getPuntuacion());
+			orden++;
 		}
 			
 		}

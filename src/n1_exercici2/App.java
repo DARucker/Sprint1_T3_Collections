@@ -8,9 +8,9 @@ import java.util.List;
 
 public class App {
 
-	List<Integer> primeraLista = new ArrayList<>();
-	List<Integer> segundaLista = new ArrayList<>();
-	Iterator<Integer> it;
+	private List<Integer> primeraLista = new ArrayList<>();
+	private List<Integer> segundaLista = new ArrayList<>();
+	private Iterator<Integer> it;
 	
 	public static void main(String[] args) {
 		App app = new App();

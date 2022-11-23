@@ -26,9 +26,8 @@ public class Restaurant {
 		this.puntuacion = puntuacion;
 	}
 	
-	public Restaurant() {
-		// TODO Auto-generated constructor stub
-	}
+	public Restaurant() {}
+	
 	@Override
 	public String toString() {
 		return "Restaurant [nombre=" + nombre + ", puntuacion=" + puntuacion + "]";
