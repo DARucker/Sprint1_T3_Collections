@@ -1,55 +1,23 @@
 package n1_exercici3;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
-public class JuegoCapitales2 {
+public class JuegoCapitales {
 
 	private Map<String, String> capitales = new HashMap<>();
 	private Map<Integer, String> capitalesOrden = new HashMap<>();
 	private Set<Integer> listaAleatoria;
-	private FileReader fileReader;
-    private BufferedReader bufferedReader;
-	private String linea;
-	private String spliter = " ";
 	private String nombre;
-	private final String RUTA = "src\\n1_exercici3\\";
-
-	// Utilizo un segundo HashMap para asegurarme que ninguna pregunta se repita
+	private File_Reader_Writer file_reader_writer = new File_Reader_Writer();	
 	
-	public void LeerLinea() {
-
-		try {
-
-			fileReader = new FileReader(RUTA + "countries.txt");
-			bufferedReader = new BufferedReader(fileReader);
-			int claveNumerica = 0;
-
-			while ((linea = bufferedReader.readLine()) != null) {
-
-				if (!linea.isEmpty()) {
-					String[] campo = linea.split(spliter);
-					capitales.put(campo[0], campo[1]);
-					capitalesOrden.put(claveNumerica, campo[0]);
-					claveNumerica++;
-				}
-			}
-		} catch (IOException e) {e.printStackTrace();}
-	}
+		public void pedirListados() {
+			capitales = file_reader_writer.crearMapDePaisesYCapitales();
+			capitalesOrden = file_reader_writer.crearMapConOrdenNumerico();
+		}
 
 	// Creamos un HashSet para asegurarnos que ninguna pregunta se repita. 
 	
@@ -92,30 +60,12 @@ public class JuegoCapitales2 {
 		System.out.println("Felicitaciones " + nombre + ", tu puntaje fue de: " + puntaje + " puntos!");
 		System.out.println("Fin del juego");
 
-		guardarArchivo(nombre, puntaje);
+		generarArchivo(nombre, puntaje);
 	}
 
-	private void guardarArchivo(String nombre, int puntaje) {
-
+	private void generarArchivo (String nombre, int puntaje) {
 		String contenidoArchivo = nombre + "," + puntaje + "\n";
-		File file = new File(RUTA + "classificacio.txt");
-		try {
-			if (!file.exists()) {
-				file.createNewFile();
-				FileWriter fileWriter = new FileWriter(file);
-				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-				bufferedWriter.write(contenidoArchivo);
-				bufferedWriter.close();
-			} else {
-				FileWriter fileWriter = new FileWriter(file, true);
-				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-				bufferedWriter.write(contenidoArchivo);
-				bufferedWriter.close();
-			}
-
-			System.out.println("Archivo de puntaje guardado.");
-
-		} catch (IOException e) {e.printStackTrace();}
+		file_reader_writer.guardarArchivo(contenidoArchivo);
 	}
 
 	public static String capturarString(String mensaje) {

@@ -4,8 +4,8 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		JuegoCapitales2 jc = new JuegoCapitales2();
-		jc.LeerLinea();
+		JuegoCapitales jc = new JuegoCapitales();
+		jc.pedirListados();
 		jc.ListaAleatoria();
 		jc.pedirNombre();
 		jc.jugar();
